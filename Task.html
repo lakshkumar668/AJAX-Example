@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Example</title>
+    <script>
+        async function myFun(){
+            //1.
+            // let xhttp  = new XMLHttpRequest();
+            // xhttp.onreadystatechange = function (){
+            //     if(xhttp.readyState == 4 && xhttp.status == 200){
+            //         document.getElementById('demo').innerHTML = xhttp.responseText;
+            //     } 
+            // }
+            // xhttp.open("GET","ajax_info.txt", true);
+            // xhttp.send()
+
+            //2.
+            let response = fetch("test.txt")
+            .then(response => {
+                return response.text()
+            })
+            .then(response =>{
+                document.getElementById('demo').innerHTML = response;
+            })
+
+            //3.
+            // let response = await fetch("ajax_info.txt");
+            // if(response.status === 200){
+            //     let text = await response.text();
+            //     document.getElementById('demo').innerHTML = text;
+            // }
+        }
+
+    </script>
+</head>
+
+<body>
+    <button type="button" class="btn" onclick="myFun()">Load Data</button>
+    <div id="demo">
+    </div>
+</body>
+
+</html>
